@@ -5,7 +5,16 @@ const screens = {
     cart: "Cart",
     favourite: "Favourite",
     notification: "Notification",
+    my_wallet: "My Wallet"
 }
+
+const bottomDrawerItems = [
+    { label: 'Track Your Order', iconName: 'location' },
+    { label: 'Coupons', iconName: 'coupon' },
+    { label: 'Settings', iconName: 'setting' },
+    { label: 'Invite a friend', iconName: 'profile' },
+    { label: 'Help Center', iconName: 'help' }
+]
 
 const bottom_tabs = [
     {
@@ -106,6 +115,7 @@ const tags = [
 export default {
     screens,
     bottom_tabs,
+    bottomDrawerItems,
     delivery_time,
     ratings,
     tags
