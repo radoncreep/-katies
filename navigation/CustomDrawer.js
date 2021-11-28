@@ -28,7 +28,6 @@ import Animated from 'react-native-reanimated';
 const Drawer = createDrawerNavigator();
 
 const CustomDrawerItem = ({ label, icon, isFocused, onPress }) => {
-    console.log(onPress)
     return (
         <TouchableOpacity
             style={[

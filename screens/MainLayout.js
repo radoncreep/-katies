@@ -1,24 +1,220 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     View,
-    Text
+    Text,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    Image,
+    FlatList,
+    StyleSheet
 } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, {
+    useSharedValue,
+    useAnimatedStyle,
+    withTiming
+}
+ from 'react-native-reanimated';
+import { connect } from 'react-redux';
+import LinearGradient from 'react-native-linear-gradient';
 
-const MainLayout = ({ drawerAnimationStyle }) => {
+import {
+    Home,
+    Search,
+    CartTab,
+    Favourite,
+    Notification
+} from "../screens";
+import {
+    COLORS,
+    FONTS,
+    SIZES,
+    icons,
+    constants,
+    dummyData
+} from "../constants";
+import setSelectedTab from '../stores/tab/tabActions';
+import { Header } from '../components';
+
+const TabButton = ({ label, icon, isFocused, onPress }) => (
+    <TouchableWithoutFeedback onPress={onPress}>
+        <Animated.View style={tabButtonStyle.outerView}>
+            <Animated.View style={tabButtonStyle.innerView}>
+                <Image 
+                    source={icon}
+                    style={tabButtonStyle.tabIconStyle}
+                />
+
+                {isFocused && 
+                    <Text
+                        numberOfLines={1}
+                        style={{
+                            marginLeft: SIZES.base,
+                            color: COLORS.gray,
+                            ...FONTS.h3
+                        }}
+                    >
+                        {label}
+                    </Text>
+                }
+            </Animated.View>
+        </Animated.View>
+    </TouchableWithoutFeedback>
+)
+
+const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelectedTab }) => {
+    const tabLabels =  ["home", "search", "cart", "favourite", "notification"];
+    const tabNames = Object.keys(constants.screens).filter((tabName) => tabLabels.includes(tabName));
+
+    useEffect(() => {
+        setSelectedTab(constants.screens.home);
+    }, []);
+
     return (
         <Animated.View
             style={{
                 flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'white',
+                backgroundColor: COLORS.white,
                 ...drawerAnimationStyle
             }}
         >
-            <Text>MainLayout</Text>
+            {/* Header */}
+            <Header
+                containerStyle={headerStyle.container}
+                title={selectedTab.toUpperCase()}
+                leftComponent={
+                    <TouchableOpacity
+                        style={headerStyle.leftComponentStyle}
+                        onPress={() => navigation.openDrawer()}
+                    >
+                        <Image source={icons.menu}/>
+                    </TouchableOpacity>
+                }
+                rightComponent={
+                    <TouchableOpacity
+                        style={headerStyle.rightComponentStyle}
+                        onPress={() => console.log('hi')}
+                    >
+                        <Image 
+                            source={dummyData?.myProfile?.profile_image}
+                            style={{
+                                width: 40,
+                                height: 40,
+                                borderRadius: SIZES.radius
+                            }}
+                        />
+                    </TouchableOpacity>
+                }
+            />
+
+            {/* Content */}
+            <View style={{ flex: 1 }}>
+                <Text>MainLayout</Text>
+            </View>
+            
+
+            {/* Footer */}
+            <View style={headerStyle.footerStyle}>
+                {/* Shadow */}
+                <LinearGradient
+                    start={{ x: 0, y: 0}}
+                    end={{ x: 0, y: 4}}
+                    colors={[ COLORS.transparent, COLORS.lightGray1 ]}
+                    style={headerStyle.footerShadow}
+                />
+
+                {/* tabs */}
+                <View style={headerStyle.tabsStyle}>
+                    { tabNames.map((tabName, index) => (
+                        <TabButton
+                            key={tabName}
+                            label={tabName}
+                            icon={icons[tabName] || icons.cart}
+                            isFocused={selectedTab === tabName}
+                            onPress={() => setSelectedTab(tabName)}
+                        />
+                    ))}
+                </View>
+            </View>
         </Animated.View>
     )
 }
 
-export default MainLayout;
+const tabButtonStyle = StyleSheet.create({
+    innerView: {
+        flexDirection: 'row',
+        width: '80%',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 25
+    },
+    outerView: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    tabIconStyle: {
+        width: 20, 
+        height: 20,
+        tintColor: COLORS.gray
+    }
+})
+
+const headerStyle = StyleSheet.create({
+    container: {
+        height: 50,
+        paddingHorizontal: SIZES.padding,
+        marginTop: 10,
+        alignItems: 'center'
+    },
+    footerShadow: {
+        position: 'absolute',
+        top: -20,
+        left: 0,
+        right: 0,
+        height: 100,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15
+    },
+    footerStyle: {
+        height: 70,
+        justifyContent: 'flex-end',
+    },
+    leftComponentStyle: {
+        width: 40,
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: COLORS.gray2,
+        borderRadius: SIZES.radius
+    },
+    rightComponentStyle: {
+        borderRadius: SIZES.radius,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    tabsStyle: {
+        flex: 1,
+        flexDirection: 'row',
+        paddingHorizontal: SIZES.radius,
+        paddingBottom: 10,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        backgroundColor: COLORS.white
+    }
+})
+
+function mapStateToProps(state) {
+    return {
+        selectedTab: state.tabReducer.selectedTab
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setSelectedTab: (selectedTab) => dispatch(setSelectedTab(selectedTab))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainLayout);
