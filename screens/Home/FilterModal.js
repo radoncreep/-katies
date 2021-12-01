@@ -8,8 +8,24 @@ import {
     Modal,
     StyleSheet
 } from 'react-native';
+import { IconButton } from '../../components';
 
 import { COLORS, FONTS, SIZES, constants, icons } from '../../constants';
+
+const CustomModalContent = ({ containerStyle, title, children }) => {
+    return (
+        <View
+            style={{
+                marginTop: SIZES.padding,
+                ...containerStyle
+            }}
+        >
+            <Text style={{ ...FONTS.h3 }}>{title}</Text>
+
+            {children}
+        </View>
+    )
+}
 
 const FilterModal = ({ isVisible, onClose }) => {
     const modalAnimatedValue = React.useRef(new Animated.Value(0)).current;
@@ -35,7 +51,17 @@ const FilterModal = ({ isVisible, onClose }) => {
     const modalY = modalAnimatedValue.interpolate({
         inputRange: [0, 1],
         outputRange: [SIZES.height, SIZES.height - 680]
-    })
+    });
+
+    function renderDistance() {
+        return (
+            <CustomModalContent 
+                title="Distance"
+            >
+
+            </CustomModalContent>
+        )
+    }
 
     return (
         <Modal
@@ -51,7 +77,41 @@ const FilterModal = ({ isVisible, onClose }) => {
                 </TouchableWithoutFeedback>
 
                 <Animated.View style={[styles.animatedView, { top: modalY }]}>
+                    {/* Header */}
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                        }}
+                    >
+                        
+                        <Text style={{ flex: 1, ...FONTS.h3, fontSize: 18 }}>
+                            Filter Your Search
+                        </Text>
 
+                        <IconButton 
+                            containerStyle={{
+                                borderWidth: 2, 
+                                borderRadius: 10, 
+                                borderColor: COLORS.gray2
+                            }}
+                            icon={icons.cross}
+                            iconStyle={{
+                                tintColor: COLORS.gray2
+                            }}
+                            onPress={() => setShowFilterModal(false)}
+                        />
+                    </View>
+
+                    <ScrollView
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{
+                            paddingBottom: 250
+                        }}
+                    >
+                        {/* Distance */}
+                        {renderDistance()}
+                    </ScrollView>
                 </Animated.View>
             </View>
         </Modal>
