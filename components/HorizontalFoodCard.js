@@ -46,7 +46,7 @@ const HorizontalFoodCard = ({ containerStyle, imageStyle, item, onPress }) => {
                         flexDirection: 'row',
                         alignItems: 'center',
                         position: 'absolute',
-                        top: -5,
+                        bottom: -6,
                         right: SIZES.radius
                     }}
                 >
