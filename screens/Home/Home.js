@@ -20,6 +20,7 @@ import{
     icons,
     dummyData
 } from '../../constants';
+import FilterModal from './FilterModal';
 
 const Section = ({ title, onPress, children }) => {
     return (
@@ -53,9 +54,11 @@ const Section = ({ title, onPress, children }) => {
 const Home = () => {
     const [ selectedCategoryId, setSelectedCategoryId ] = useState(1);
     const [ selectedMenuType, setSelectedMenuType ] = useState(1);
-    const [ menuList, setMenuList ] = useState([]);
-    const [ recommends, setRecommends ] = useState([]);
     const [ popular, setPopular ] = useState([]);
+    const [ recommends, setRecommends ] = useState([]);
+    const [ menuList, setMenuList ] = useState([]);
+
+    const [ showFilterModal, setShowFilterModal ] = useState(false);
 
     useEffect(() => {
         handleChangeCategory(selectedCategoryId, selectedMenuType);
@@ -107,7 +110,7 @@ const Home = () => {
                 />
 
                 {/* filter button */}
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => setShowFilterModal(true)}>
                     <Image 
                         source={icons.filter}
                         style={{
@@ -318,6 +321,13 @@ const Home = () => {
         >
             {/* Search Section */}
             {renderSearch()}
+
+            {showFilterModal && (
+                <FilterModal 
+                    isVisible={showFilterModal}
+                    onClose={() => setShowFilterModal(false)}
+                />
+            )}
 
             {/* list */}
             <FlatList 
