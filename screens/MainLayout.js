@@ -65,6 +65,7 @@ const TabButton = ({ label, icon, isFocused, innerContainerStyle, outerContainer
 )
 
 const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelectedTab }) => {
+    const flatListRef = React.useRef();
 
     // Reanaimted Animated Value
     const homeTabFlex = useSharedValue(1);
@@ -145,6 +146,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
 
     useEffect(() => {
         if (selectedTab === constants.screens.home) {
+            flatListRef?.current?.scrollToIndex({
+                index: 0,
+                Animated: false
+            })
             homeTabFlex.value = withTiming(4, { duration: 500 })
             homeTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -153,6 +158,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab === constants.screens.search) {
+            flatListRef?.current?.scrollToIndex({
+                index: 1,
+                Animated: false
+            })
             searchTabFlex.value = withTiming(4, { duration: 500 })
             searchTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -161,6 +170,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab === constants.screens.cart) {
+            flatListRef?.current?.scrollToIndex({
+                index: 2,
+                Animated: false
+            })
             cartTabFlex.value = withTiming(4, { duration: 500 })
             cartTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -169,6 +182,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab === constants.screens.favourite) {
+            flatListRef?.current?.scrollToIndex({
+                index: 3,
+                Animated: false
+            })
             favouriteTabFlex.value = withTiming(4, { duration: 500 })
             favouriteTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -177,6 +194,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
 
         if (selectedTab === constants.screens.notification) {
+            flatListRef?.current?.scrollToIndex({
+                index: 4,
+                Animated: false
+            })
             notificationTabFlex.value = withTiming(4, { duration: 500 })
             notificationTabColor.value = withTiming(COLORS.primary, { duration: 500 })
         } else {
@@ -224,7 +245,26 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
 
             {/* Content */}
             <View style={{ flex: 1 }}>
-                <Text>MainLayout</Text>
+                <FlatList
+                    ref={flatListRef}
+                    horizontal
+                    scrollEnabled={false}
+                    pagingEnabled
+                    snapToAlignment="center"
+                    snapToInterval={SIZES.width}
+                    showsHorizontalScrollIndicator={false}
+                    data={constants.bottom_tabs}
+                    keyExtractor={(item) => `${item.id}`}
+                    renderItem={({ item, index }) => (
+                        <View style={{ height: SIZES.height, width: SIZES.width }}>
+                            {item.label === constants.screens.home && <Home />}
+                            {item.label === constants.screens.search && <Search />}
+                            {item.label === constants.screens.cart && <CartTab />}
+                            {item.label === constants.screens.favourite && <Favourite />}
+                            {item.label === constants.screens.notification && <Notification />}
+                        </View>
+                    )}
+                />
             </View>
             
 
