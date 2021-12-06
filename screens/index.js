@@ -14,7 +14,13 @@ import CartTab from "./Cart/CartTab"
 import Favourite from "./Favourite/Favourite";
 
 // Notification
-import Notification from "./Notification/Notification"
+import Notification from "./Notification/Notification";
+
+import SignIn from "./Authentication/SignIn";
+import SignUp from "./Authentication/SignUp";
+import Otp from "./Authentication/Otp";
+import ForgotPassword from "./Authentication/ForgotPassword";
+import AuthLayout from "./Authentication/AuthLayout";
 
 export {
     MainLayout,
@@ -22,5 +28,10 @@ export {
     Search,
     CartTab,
     Favourite,
-    Notification
+    Notification,
+    SignIn,
+    SignUp,
+    Otp,
+    ForgotPassword,
+    AuthLayout
 }

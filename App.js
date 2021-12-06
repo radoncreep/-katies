@@ -7,6 +7,8 @@ import thunk from "redux-thunk";
 import rootReducer from "./stores/rootReducer";
 
 import CustomDrawer from './navigation/CustomDrawer';
+import Onboarding from "./screens/Onboarding/Onboarding";
+import { SignIn } from "./screens";
 
 const store = createStore(
     rootReducer,
@@ -23,8 +25,16 @@ const App = () => {
                     screenOptions={{
                         headerShown: false
                     }}
-                    initialRouteName={'Home'}
+                    initialRouteName={'Onboarding'}
                 >
+                    <Stack.Screen 
+                        name="Onboarding"
+                        component={Onboarding}
+                    />
+                    <Stack.Screen
+                        name="SignIn"
+                        component={SignIn}
+                    />
                     <Stack.Screen
                         name="Home"
                         component={CustomDrawer}
