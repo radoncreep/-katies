@@ -8,7 +8,6 @@ import {
 import { COLORS, FONTS, SIZES } from "../constants";
 
 const CustomSwitch = ({ value, onChange }) => {
-    console.log(value)
     return (
         <TouchableWithoutFeedback onPress={() => onChange(!value)}>
             <View style={{ flexDirection: "row" }}>
