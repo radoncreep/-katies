@@ -6,7 +6,7 @@ import {
 
 const ForgotPassword = () => {
     return (
-        <View>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <Text>ForgotPassword</Text>
         </View>
     )
