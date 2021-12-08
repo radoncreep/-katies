@@ -143,6 +143,7 @@ const SignIn = ({ navigation }) => {
                         backgroundColor: isEnabledSignIn() ? COLORS.primary : COLORS.transparentPrimary  
                     }}
                     disabled={isEnabledSignIn() ? false : true}
+                    onPress={() => navigation.navigate("Home")}
                 />
 
                 {/* Sing up */}
@@ -176,48 +177,48 @@ const SignIn = ({ navigation }) => {
                         onPress={() => navigation.navigate("SignUp")}
                     />
                 </View>
+                {/* Footer Section */}
+                {/* facebook login button */}
+                <View style={{ marginTop: SIZES.padding }}>
+                    <TextIconButton 
+                        containerStyle={{
+                            height: 50, 
+                            alignItems: "center",
+                            borderRadius: SIZES.radius,
+                            backgroundColor: COLORS.blue
+                        }}
+                        icon={icons.fb}
+                        iconPosition="LEFT"
+                        iconStyle={{
+                            tintColor: COLORS.white
+                        }}
+                        label="Continue With Facebook"
+                        labelStyle={{
+                            marginLeft: SIZES.radius,
+                            color: COLORS.white
+                        }}
+                        onPress={() => console.log("Fb")}
+                    />
+
+                    {/* Google login button */}
+                    <TextIconButton 
+                        containerStyle={{
+                            height: 50, 
+                            alignItems: "center",
+                            marginVertical: SIZES.radius,
+                            borderRadius: SIZES.radius,
+                            backgroundColor: COLORS.lightGray2
+                        }}
+                        icon={icons.google}
+                        iconPosition="LEFT"
+                        label="Continue With Google"
+                        labelStyle={{
+                            marginLeft: SIZES.radius,
+                        }}
+                        onPress={() => console.log("Fb")}
+                    />
+                </View>
             </View>
-
-            {/* Footer Section */}
-            {/* facebook login button */}
-            <TextIconButton 
-                containerStyle={{
-                    height: 50, 
-                    alignItems: "center",
-                    borderRadius: SIZES.radius,
-                    backgroundColor: COLORS.blue
-                }}
-                icon={icons.fb}
-                iconPosition="LEFT"
-                iconStyle={{
-                    tintColor: COLORS.white
-                }}
-                label="Continue With Facebook"
-                labelStyle={{
-                    marginLeft: SIZES.radius,
-                    color: COLORS.white
-                }}
-                onPress={() => console.log("Fb")}
-            />
-
-            {/* Google login button */}
-            <TextIconButton 
-                containerStyle={{
-                    height: 50, 
-                    alignItems: "center",
-                    marginVertical: SIZES.radius,
-                    borderRadius: SIZES.radius,
-                    backgroundColor: COLORS.lightGray2
-                }}
-                icon={icons.google}
-                iconPosition="LEFT"
-                label="Continue With Google"
-                labelStyle={{
-                    marginLeft: SIZES.radius,
-                }}
-                onPress={() => console.log("Fb")}
-            />
-
         </AuthLayout>
     )
 }
