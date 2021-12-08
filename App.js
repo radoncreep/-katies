@@ -8,7 +8,7 @@ import rootReducer from "./stores/rootReducer";
 
 import CustomDrawer from './navigation/CustomDrawer';
 import Onboarding from "./screens/Onboarding/Onboarding";
-import { SignIn } from "./screens";
+import { ForgotPassword, SignIn } from "./screens";
 
 const store = createStore(
     rootReducer,
@@ -34,6 +34,10 @@ const App = () => {
                     <Stack.Screen
                         name="SignIn"
                         component={SignIn}
+                    />
+                    <Stack.Screen
+                        name="ForgotPassword"
+                        component={ForgotPassword}
                     />
                     <Stack.Screen
                         name="Home"
