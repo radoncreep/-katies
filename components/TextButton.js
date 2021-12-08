@@ -7,7 +7,7 @@ import{
 
 import { FONTS, COLORS } from "../constants";
 
-const TextButton = ({ label, labelStyle, buttonContainerStyle, onPress }) => {
+const TextButton = ({ disabled, label, labelStyle, buttonContainerStyle, onPress }) => {
     return (
         <TouchableOpacity
             style={{ 
@@ -17,6 +17,7 @@ const TextButton = ({ label, labelStyle, buttonContainerStyle, onPress }) => {
                 ...buttonContainerStyle
             }} 
             onPress={onPress}
+            disabled={disabled}
         >
             <Text
                 style={{ 
