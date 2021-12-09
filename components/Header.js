@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { FONTS } from '../constants';
 
-export default function Header({ containerStyle, title, leftComponent, rightComponent }) {
+export default function Header({ containerStyle, title, titleStyle, leftComponent, rightComponent }) {
     return (
         <View style={ [ styles.container, {...containerStyle } ] }>
             {/* Left */}
@@ -10,7 +10,11 @@ export default function Header({ containerStyle, title, leftComponent, rightComp
 
             {/* title */}
             <View style={styles.headerTitleContainer}>
-                <Text style={{ ...FONTS.h3 }}>{title}</Text>
+                <Text 
+                    style={{ ...FONTS.h3, ...titleStyle }}
+                >
+                    {title}
+                </Text>
             </View>
 
             {/* right */}
@@ -22,6 +26,7 @@ export default function Header({ containerStyle, title, leftComponent, rightComp
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
+        height: 60,
     },
     headerTitleContainer: {
         flex: 1,
