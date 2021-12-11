@@ -367,7 +367,7 @@ const Home = ({ navigation }) => {
                             width: 110
                         }}
                         item={item}
-                        onPress={() => console.log("horizontal food card")}
+                        onPress={() => navigation.navigate("FoodDetails", item)}
                     />
                 )}
                 ListFooterComponent={
