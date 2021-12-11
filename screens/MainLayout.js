@@ -257,7 +257,7 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
                     keyExtractor={(item) => `${item.id}`}
                     renderItem={({ item, index }) => (
                         <View style={{ height: SIZES.height, width: SIZES.width }}>
-                            {item.label === constants.screens.home && <Home />}
+                            {item.label === constants.screens.home && <Home navigation={navigation} />}
                             {item.label === constants.screens.search && <Search />}
                             {item.label === constants.screens.cart && <CartTab />}
                             {item.label === constants.screens.favourite && <Favourite />}

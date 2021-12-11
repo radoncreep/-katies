@@ -51,7 +51,8 @@ const Section = ({ title, onPress, children }) => {
     )
 }
 
-const Home = () => {
+const Home = ({ navigation }) => {
+    
     const [ selectedCategoryId, setSelectedCategoryId ] = useState(1);
     const [ selectedMenuType, setSelectedMenuType ] = useState(1);
     const [ popular, setPopular ] = useState([]);
@@ -213,7 +214,7 @@ const Home = () => {
                                 marginRight: index == popular.length - 1 ? SIZES.padding : 0
                             }}
                             item={item}
-                            onPress={() => console.log("Popular Vertical Card")}
+                            onPress={() => navigation.navigate("FoodDetails", item)}
                         />
                     )}
                 />
@@ -366,7 +367,7 @@ const Home = () => {
                             width: 110
                         }}
                         item={item}
-                        onPress={() => console.log("horizontal food card")}
+                        onPress={() => navigation.navigate("FoodDetails", item)}
                     />
                 )}
                 ListFooterComponent={

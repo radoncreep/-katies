@@ -22,6 +22,8 @@ import Otp from "./Authentication/Otp";
 import ForgotPassword from "./Authentication/ForgotPassword";
 import AuthLayout from "./Authentication/AuthLayout";
 
+import FoodDetails from "./Food/FoodDetails";
+
 export {
     MainLayout,
     Home,
@@ -33,5 +35,6 @@ export {
     SignUp,
     Otp,
     ForgotPassword,
-    AuthLayout
+    AuthLayout,
+    FoodDetails
 }

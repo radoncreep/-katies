@@ -7,3 +7,8 @@ export { default as TextButton } from './TextButton';
 export { default as TextIconButton } from './TextIconButton';
 export { default as FormInput } from './FormInput';
 export { default as CustomSwitch } from './CustomSwitch';
+export { default as CartQuantityButton } from './CartQuantityButton';
+export { default as IconLabel } from './IconLabel';
+export { default as LineDivider } from './LineDivider';
+export { default as Ratings } from './Ratings';
+export { default as StepperInput } from './StepperInput';

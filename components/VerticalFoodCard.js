@@ -18,6 +18,7 @@ const VerticalFoodCard = ({ containerStyle, item, onPress }) => {
                 backgroundColor: COLORS.lightGray2,
                 ...containerStyle
             }}
+            onPress={onPress}
         >
             {/* calories and favourite section */}
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
