@@ -25,6 +25,7 @@
     "react-native-reanimated": "^2.0.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.4.0",
+    "react-native-swipe-list-view": "^3.2.9",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1"
