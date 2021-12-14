@@ -23,12 +23,14 @@ import ForgotPassword from "./Authentication/ForgotPassword";
 import AuthLayout from "./Authentication/AuthLayout";
 
 import FoodDetails from "./Food/FoodDetails";
+import CardsScreen from "./Cards/CardsScreen";
 
 export {
     MainLayout,
     Home,
     Search,
     CartTab,
+    CardsScreen,
     Favourite,
     Notification,
     SignIn,

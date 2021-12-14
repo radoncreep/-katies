@@ -12,3 +12,4 @@ export { default as IconLabel } from './IconLabel';
 export { default as LineDivider } from './LineDivider';
 export { default as Ratings } from './Ratings';
 export { default as StepperInput } from './StepperInput';
+export { default as FooterTotal } from './FooterTotal';

@@ -8,7 +8,7 @@ import rootReducer from "./stores/rootReducer";
 
 import CustomDrawer from './navigation/CustomDrawer';
 import Onboarding from "./screens/Onboarding/Onboarding";
-import { CartTab, FoodDetails, ForgotPassword, Otp, SignIn, SignUp } from "./screens";
+import { CardsScreen, CartTab, FoodDetails, ForgotPassword, Otp, SignIn, SignUp } from "./screens";
 
 const store = createStore(
     rootReducer,
@@ -58,6 +58,10 @@ const App = () => {
                     <Stack.Screen
                         name="MyCart"
                         component={CartTab}
+                    />
+                    <Stack.Screen
+                        name="CardsScreen"
+                        component={CardsScreen}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
