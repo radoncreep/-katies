@@ -124,7 +124,7 @@ const Onboarding = ({ navigation }) => {
                                     color: COLORS.darkGray2
                                 }}
                                 label="Skip"
-                                onPress={() => navigation.navigate("SignIn")}
+                                onPress={() => navigation.navigate("Home")}
                             />
 
                             <TextButton
