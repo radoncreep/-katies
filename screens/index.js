@@ -24,6 +24,9 @@ import AuthLayout from "./Authentication/AuthLayout";
 
 import FoodDetails from "./Food/FoodDetails";
 import CardsScreen from "./Cards/CardsScreen";
+import AddCardScreen from "./Cards/AddCard";
+import Checkout from "./Checkout/Checkout";
+
 
 export {
     MainLayout,
@@ -31,6 +34,8 @@ export {
     Search,
     CartTab,
     CardsScreen,
+    AddCardScreen,
+    Checkout,
     Favourite,
     Notification,
     SignIn,

@@ -57,7 +57,6 @@ const CardsScreen = ({  navigation }) => {
         return (
             <View>
                 {dummyData.myCards.map((card, index) => {
-                    console.log('card ', card)
                     return (
                         <CardItem 
                             keys={`MyCard-${card.id}`}
@@ -115,7 +114,17 @@ const CardsScreen = ({  navigation }) => {
                         backgroundColor: selectedCard ? COLORS.primary : COLORS.gray
                     }}
                     label={selectedCard?.key == "NewCard" ? "Add Card" : "Place Your Order"}
-
+                    onPress={() => {
+                        if (selectedCard?.key == "NewCard") {
+                            navigation.navigate("AddCard", {
+                                selectedCard
+                            });
+                        } else {
+                            navigation.navigate("Checkout", {
+                                selectedCard
+                            })
+                        }
+                    }}
                 />
             </View>
         )
