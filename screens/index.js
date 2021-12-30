@@ -26,7 +26,8 @@ import FoodDetails from "./Food/FoodDetails";
 import CardsScreen from "./Cards/CardsScreen";
 import AddCardScreen from "./Cards/AddCard";
 import Checkout from "./Checkout/Checkout";
-
+import DeliveryStatusScreen from "./DeliveryStatus/DeliveryStatusScreen";
+import MapViewScreen from "./DeliveryStatus/MapViewScreen";
 
 export {
     MainLayout,
@@ -43,5 +44,7 @@ export {
     Otp,
     ForgotPassword,
     AuthLayout,
-    FoodDetails
+    FoodDetails,
+    DeliveryStatusScreen,
+    MapViewScreen
 }

@@ -8,7 +8,8 @@ import rootReducer from "./stores/rootReducer";
 
 import CustomDrawer from './navigation/CustomDrawer';
 import Onboarding from "./screens/Onboarding/Onboarding";
-import { AddCardScreen, CardsScreen, CartTab, Checkout, FoodDetails, ForgotPassword, Otp, SignIn, SignUp } from "./screens";
+import { AddCardScreen, CardsScreen, CartTab, Checkout, DeliveryStatusScreen, FoodDetails, ForgotPassword, MapViewScreen, Otp, SignIn, SignUp } from "./screens";
+import SuccessScreen from "./screens/Success/Success";
 
 const store = createStore(
     rootReducer,
@@ -70,6 +71,21 @@ const App = () => {
                     <Stack.Screen
                         name="Checkout"
                         component={Checkout}
+                    />
+                    <Stack.Screen
+                        name="Success"
+                        component={SuccessScreen}
+                        // options={{ gestureEnabled: false }} // ios opt
+                    />
+                    <Stack.Screen
+                        name="DeliveryStatusScreen"
+                        component={DeliveryStatusScreen}
+                        // options={{ gestureEnabled: false }} // ios opt
+                    />
+                    <Stack.Screen
+                        name="MapView"
+                        component={MapViewScreen}
+                        // options={{ gestureEnabled: false }} // ios opt
                     />
                 </Stack.Navigator>
             </NavigationContainer>
