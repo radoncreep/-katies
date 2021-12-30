@@ -29,16 +29,8 @@ const screens = {
     cart: "Cart",
     favourite: "Favourite",
     notification: "Notification",
-    my_wallet: "My Wallet"
+    my_wallet: "My Wallet",
 }
-
-const bottomDrawerItems = [
-    { label: 'Track Your Order', iconName: 'location' },
-    { label: 'Coupons', iconName: 'coupon' },
-    { label: 'Settings', iconName: 'setting' },
-    { label: 'Invite a friend', iconName: 'profile' },
-    { label: 'Help Center', iconName: 'help' }
-]
 
 const bottom_tabs = [
     {
@@ -61,6 +53,14 @@ const bottom_tabs = [
         id: 4,
         label: screens.notification,
     },
+]
+
+const bottomDrawerItems = [
+    { label: 'Track Your Order', iconName: 'location' },
+    { label: 'Coupons', iconName: 'coupon' },
+    { label: 'Settings', iconName: 'setting' },
+    { label: 'Invite a friend', iconName: 'profile' },
+    { label: 'Help Center', iconName: 'help' }
 ]
 
 const delivery_time = [
@@ -136,6 +136,36 @@ const tags = [
     }
 ]
 
+const track_order_status = [
+    {
+        id: 1,
+        title: "Order Confirmed",
+        sub_title: "Your order has been received"
+    },
+    {
+        id: 2,
+        title: "Order Prepared",
+        sub_title: "Your order has been prepared"
+    },
+    {
+        id: 3,
+        title: "Delivery in Progress",
+        sub_title: "Hang on! Your food is on the way"
+    },
+    {
+        id: 4,
+        title: "Delivered",
+        sub_title: "Enjoy your meal!"
+    },
+    {
+        id: 5,
+        title: "Rate Us",
+        sub_title: "Help us improve our service"
+    }
+]
+
+const GOOGLE_MAP_API_KEY = ""
+
 export default {
     onboarding_screens,
     screens,
@@ -143,5 +173,7 @@ export default {
     bottomDrawerItems,
     delivery_time,
     ratings,
-    tags
+    tags,
+    track_order_status,
+    GOOGLE_MAP_API_KEY,
 }
